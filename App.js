@@ -11,6 +11,12 @@ import {
   Text,
   View
 } from 'react-native';
+import * as firebase from "firebase";
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -25,7 +31,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-Hey Tom, if you see this then I guess you got it running from the git repo.
+          Test to see if we're running live code.
         </Text>
         <Text style={styles.instructions}>
           {instructions}
@@ -53,3 +59,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+
