@@ -22,37 +22,36 @@ const firebaseConfig = {
     projectId: "kandu-204700",
     storageBucket: "kandu-204700.appspot.com",
     messagingSenderId: "438503554770"
-  };
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-Firebase.initializeApp({
-	projectId: firebaseConfig.projectId,
-    apiKey: firebaseConfig.apiKey,
-    authDomain: firebaseConfig.authDomain,
-    databaseURL: firebaseConfig.databaseURL,
-    storageBucket: firebaseConfig.storageBucket
-});
+};
+Firebase.initializeApp(firebaseConfig);
+
 let db = Firebase.firestore();
 db.settings({timestampsInSnapshots:true});
-let users = db.collection('users');
+
 type Props = {};
 export default class App extends Component<Props> {
+	state = {
+		users: []	
+	};
 	constructor() {
 		super();
+		this.getUsers();
 	}
 	render() {
 		return (
 			<View style={styles.container}>
 				<FlatList
-					data={users}
+					data={this.state.users}
 					renderItem={({user}) => <Text>{user.firstName}</Text>}
 				/>
 			</View>
 		);
+	}
+	getUsers() {
+		let self = this;
+		db.collection('users').get().then((users) => {
+			self.state.users = users;
+		});
 	}
 }
 
