@@ -50,7 +50,7 @@ export default class App extends Component<Props> {
 	getUsers() {
 		let self = this;
 		db.collection('users').get().then((users) => {
-			self.state.users = users;
+			self.state.users = users.map(f => f.data());
 		});
 	}
 }
