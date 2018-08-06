@@ -1,0 +1,51 @@
+Board -> User
+Payment <-> User
+User <-> Type
+User <- Rating -> Type
+Job <-> User
+
+
+Tables:
+
+Job
+	- Creator (User)
+	- Acceptor (User)
+	- Date (DateTime)
+	- Requested Price (Float)
+	- Agreed upon price (Float)
+	- Location (Lat / Lon)
+	- Job Description (String)
+	- Picture (idk how to store a picture. maybe an encoded base64 string)
+
+User
+	- First Name (String)
+	- Last Name (String)
+	- email (String)
+	- phone number (String? int?)
+	- Address (FK)
+		- Street Location (String)
+		- Zip (String)
+		- Apt Number (string)
+		- City (String)
+		- State (String)
+	- Payment Info (FK)
+		- Cards
+			- Name (String)
+			- Card # (Int? not sure about this one)
+			- Exp Date (string in mm/yyyy format)
+			- Security Code (String / Int, not sure)
+
+- Board
+- Payment 
+- Rating
+
+
+
+
+
+
+
+
+
+
+
